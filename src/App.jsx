@@ -608,6 +608,43 @@ function Dashboard({ user, onLogout }) {
       ? 0
       : Math.round((completed / tasks.length) * 100);
 
+  const getAISuggestion = () => {
+    if (tasks.length === 0) {
+      return "Start by creating your first task. Breaking work into smaller tasks can improve productivity.";
+    }
+
+    const pendingTasks = tasks.filter((task) => !task.done);
+
+    if (pendingTasks.length === 0) {
+      return "Excellent work! 🎉 All your tasks are completed. Plan your next goal to maintain your productivity.";
+    }
+
+    const priorityKeywords = [
+      "urgent",
+      "important",
+      "deadline",
+      "exam",
+      "submission",
+      "project",
+    ];
+
+    const priorityTask = pendingTasks.find((task) =>
+      priorityKeywords.some((keyword) =>
+        task.title.toLowerCase().includes(keyword)
+      )
+    );
+
+    if (priorityTask) {
+      return `Focus recommendation: "${priorityTask.title}" should be handled first because it appears to be a high-priority task.`;
+    }
+
+    if (pendingTasks.length >= 4) {
+      return `You have ${pendingTasks.length} pending tasks. Try completing one task at a time and start with "${pendingTasks[0].title}".`;
+    }
+
+    return `Your current completion rate is ${progress}%. A good next step is to complete "${pendingTasks[0].title}".`;
+  };
+
   const navItems = [
     ["Overview", "⌂"],
     ["Tasks", "✓"],
@@ -1098,6 +1135,31 @@ function Dashboard({ user, onLogout }) {
                 value="7 days"
                 subtitle="Personal best: 12"
               />
+
+            </section>
+
+            <section className="ai-assistant-card">
+
+              <div className="ai-header">
+                <div>
+                  <span className="focus-label">
+                    ✦ AI PRODUCTIVITY ASSISTANT
+                  </span>
+                  <h3>Smart Productivity Insight</h3>
+                </div>
+
+                <div className="ai-icon">🤖</div>
+              </div>
+
+              <p className="ai-suggestion">
+                {getAISuggestion()}
+              </p>
+
+              <div className="ai-stats">
+                <span>📊 {progress}% completion</span>
+                <span>✓ {completed} completed</span>
+                <span>◷ {pending} pending</span>
+              </div>
 
             </section>
 
