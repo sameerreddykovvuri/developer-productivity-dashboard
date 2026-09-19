@@ -567,16 +567,16 @@ function Dashboard({ user, onLogout }) {
     },
     {
       id: 2,
-      name: "Mukundha",
+      name: "spoorthi",
       role: "Backend Developer",
-      initials: "KM",
+      initials: "rs",
       online: true,
     },
     {
       id: 3,
-      name: "Phaneendra",
+      name: "sri",
       role: "UI/UX Designer",
-      initials: "SP",
+      initials: "ss",
       online: false,
     },
   ]);
