@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1789704975262",
+    "name": "Sameer Reddy",
+    "email": "sameer@example.com",
+    "role": "Developer"
+  },
+  {
+    "id": "1789717373128",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "role": "user"
+  },
+  {
+    "id": "1789801203830",
+    "name": "Sameer Reddy",
+    "email": "sameer@example.com",
+    "role": "Developer"
+  }
+]
